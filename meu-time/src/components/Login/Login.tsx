@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import api from '../../api';
 
 const Login: React.FC = () => {
   const [apiKey, setApiKey] = useState('');
@@ -6,7 +7,7 @@ const Login: React.FC = () => {
   const handleApiKeyChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setApiKey(event.target.value);
   };
-
+  const result = await api.get('https://www.api-football.com/', {email, password});
   const handleLogin = (event: React.FormEvent) => {
     event.preventDefault();
     // Lógica para realizar o login com a API key
